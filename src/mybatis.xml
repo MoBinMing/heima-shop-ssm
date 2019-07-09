@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 日志开启 -->
+		<setting name="logImpl" value="LOG4J2" />
+	</settings>
+	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 默认值为 false，当该参数设置为 true 时，如果 pageSize=0  就会查询出全部的结果（相当于没有执行分页查询，但是返回结果仍然是 Page 类型）。 -->
+			<property name="pageSizeZero" value="true"/>
+			<!-- 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。 -->
+			<property name="reasonable" value="true"/>
+			<!-- 开启支持从方法中  -->
+			<property name="supportMethodsArguments" value="true"/>
+        	<property name="params" value="pageNum=pageNo;pageSize=pageSize;orderBy=orderBy;pageSizeZero:pageSizeZero;"/>
+		</plugin>
+	</plugins>
+</configuration>
