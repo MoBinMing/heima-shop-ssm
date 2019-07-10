@@ -15,25 +15,32 @@ import com.itheima.shop.service.ProductService;
 @Controller
 @RequestMapping("/")
 public class RootController {
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private HttpServletRequest requesst;
-	
+
 	@RequestMapping("/header")
 	public String header() {
 		requesst.setAttribute("categories", categoryService.findAll());
 		return "header";//forward
 	}
-	
+
+	@RequestMapping("/index")
+	public String index() {
+		requesst.setAttribute("findHot",productService.findHot());
+		return "index";
+	}
+
 	@RequestMapping("/findNew")
 	@ResponseBody
 	public Page<Product> findNew(){
 		return productService.findNew();
 	}
+
 }

@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -97,5 +98,24 @@ public class TestCategory {
 	public void test08() {
 		List<Category> categories = categoryMapper.findAll2(2,0);
 		System.out.println(categories);
+	}
+
+	//redis的hash和value对比
+	@Test
+	public void test09() {
+		ValueOperations<String, String> ops = stringTemplate.opsForValue();
+		List<Category> categories = categoryMapper.findAll();
+		for(Category category:categories) {
+			ops.set("cid_"+category.getCid(),category.getCname());
+		}
+	}
+
+	@Test
+	public void test10() {
+		HashOperations<String,Object,Object> ops = stringTemplate.opsForHash();
+		List<Category> categories = categoryMapper.findAll();
+		for(Category category:categories) {
+			ops.put("cat", "cid_"+category.getCid(),category.getCname());
+		}
 	}
 }
