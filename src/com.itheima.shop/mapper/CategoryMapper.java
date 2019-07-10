@@ -9,6 +9,10 @@ import com.github.pagehelper.Page;
 import com.itheima.shop.entity.Category;
 
 public interface CategoryMapper {
+	
+	@Select("select * from tab_category where cid = #{cid}")
+	public Category findByCid(int cid);
+	
 	@Select("select * from tab_category order by cid asc")
 	public Page<Category> findAll();
 	
@@ -16,5 +20,5 @@ public interface CategoryMapper {
 	public Page<Category> findAll3();
 	
 	@Select("select * from tab_category order by cid asc")
-	public List<Category> findAll2(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+	public List<Category> findAll2(@Param("pageNo")int pageNo,@Param("pageSize")int pageSize);
 }

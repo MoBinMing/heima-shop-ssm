@@ -99,8 +99,7 @@ public class TestCategory {
 		List<Category> categories = categoryMapper.findAll2(2,0);
 		System.out.println(categories);
 	}
-
-	//redis的hash和value对比
+	
 	@Test
 	public void test09() {
 		ValueOperations<String, String> ops = stringTemplate.opsForValue();
@@ -109,7 +108,7 @@ public class TestCategory {
 			ops.set("cid_"+category.getCid(),category.getCname());
 		}
 	}
-
+	
 	@Test
 	public void test10() {
 		HashOperations<String,Object,Object> ops = stringTemplate.opsForHash();

@@ -47,10 +47,10 @@ public class DemoController {
 		logger.info(list.toString());
 		return list;
 	}
-
+	
 	@Autowired
 	private HttpServletResponse response;
-
+	
 	@RequestMapping("/images/{name}") //restful 风格
 	@ResponseBody
 	public void image(@PathVariable("name")String name) {

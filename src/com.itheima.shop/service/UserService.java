@@ -8,5 +8,5 @@ public interface UserService {
 	
 	public UserMessage activate(String code);
 	
-	public UserMessage login(String username, String password);
+	public UserMessage login(String username,String password);
 }

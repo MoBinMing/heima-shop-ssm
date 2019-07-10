@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!-- 登录 注册 购物车... -->
@@ -12,9 +12,9 @@
 	</div>
 	<div class="col-md-3" style="padding-top: 20px">
 		<c:if test="${USER!=null}">
-			欢迎【${USER.username}】光临！
+				欢迎【${USER.username}】光临！
 		</c:if>
-
+		
 		<ol class="list-inline">
 			<c:choose>
 				<c:when test="${USER!=null}">
@@ -37,8 +37,8 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-						aria-expanded="false">
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
@@ -47,13 +47,13 @@
 			</div>
 
 			<div class="collapse navbar-collapse"
-				 id="bs-example-navbar-collapse-1">
+				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<c:forEach var="category" items="${categories}" varStatus="varStatus">
 						<c:choose>
 							<c:when test="${category.cid==param.cid}">
 								<li class="active"><a href="<c:url value='/product/findByCid'/>?cid=${category.cid}">${category.cname}<span
-										class="sr-only">(current)</span></a></li>
+									class="sr-only">(current)</span></a></li>
 							</c:when>
 							<c:otherwise>
 								<li><a href="<c:url value='/product/findByCid'/>?cid=${category.cid}">${category.cname}</a></li>

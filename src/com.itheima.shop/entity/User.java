@@ -1,12 +1,9 @@
-package com.itheima.shop.entity;
-
-
-import java.io.Serializable;
+	package com.itheima.shop.entity;
 
 /**
  * 用户
  */
-public class User implements Serializable {
+public class User implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

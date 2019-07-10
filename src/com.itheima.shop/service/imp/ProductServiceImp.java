@@ -2,8 +2,6 @@ package com.itheima.shop.service.imp;
 
 import java.util.concurrent.TimeUnit;
 
-import java.util.concurrent.TimeUnit;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -23,10 +21,10 @@ public class ProductServiceImp implements ProductService{
 
 	@Autowired
 	private ProductMapper productMapper;
-
+	
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
-
+	
 	@Override
 	public Page<Product> findHot() {
 		Page<Product> hotProducts = null;
@@ -68,5 +66,10 @@ public class ProductServiceImp implements ProductService{
 		return PageInfo.of(products);
 	}
 
-
+	@Override
+	public Product findByPid(int pid) {
+		// TODO Auto-generated method stub
+		return productMapper.findByPid(pid);
+	}
+	
 }
