@@ -8,7 +8,10 @@ import com.itheima.shop.entity.Product;
 public interface ProductMapper {
 	@Select("select * from tab_product where pflag = 1 and is_hot = 1")
 	public Page<Product> findHot();
-	
+
 	@Select("select * from tab_product where pflag = 1")
 	public Page<Product> findNew();
+
+	@Select("select * from tab_product where pflag = 1 and cid = #{cid}")
+	public Page<Product> findByCid(Integer cid);
 }
